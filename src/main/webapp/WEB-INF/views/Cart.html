@@ -1,0 +1,213 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Site Metas -->
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="">
+    <title> Pizza&More </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <!-- responsive style -->
+    <link th:href="@{/css/responsive.css}" rel="stylesheet"/>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+    <!-- font awesome style -->
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+    <!-- register -->
+    <link rel="stylesheet" th:href="@{/css/cart.css}">
+
+</head>
+
+<body th:style="'background: url(/images/hero-bg.jpg); position: relative'">
+<th:block th:insert="/components/navbarComponent :: navbar"></th:block>
+<!-- end header section -->
+<div style="display: block; height: 100vh"></div>
+<div class="Cart_item mt-4"
+     style="position: absolute;
+    top: 5%;
+    left: 2%;
+    width: 100%;">
+    <h1 class="text-center">Giỏ hàng</h1>
+    <div class="row">
+        <div class="col col-md-12">
+            <table class="table-cart table-bordered" style="background-color: #30383a;">
+                <thead>
+                <tr>
+                    <th scope="col" style="padding: 20px">STT</th>
+                    <th scope="col" style="padding: 20px">Product</th>
+                    <th scope="col">Image</th>
+                    <th scope="col" style="padding: 50px">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col" style="padding: 20px;">Total amount</th>
+                    <th scope="col" colspan="2" style="padding: 20px;">Action</th>
+                </tr>
+                </thead>
+                <tbody id="datarow">
+                <th:block th:each="item : ${listCart}">
+                    <form action="/cartController/update" method="get">
+                        <tr>
+                            <input type="hidden" name="cdId" th:value="${item.id}"/>
+                            <td><span th:text="${item.id}"></span></td>
+                            <td><span th:text="${item.name}"></span></td>
+                            <td><img th:src="${'/images/'+item.imageURL}" th:alt="${item.name}" style="width: 80%"></td>
+                            <td><span th:text="${item.price}+' $'"></span></td>
+                            <td><input type="number" name="quantity" th:value="${item.quantity}" style="width: 100px">
+                            </td>
+                            <td><span th:text="${item.price*item.quantity}+' $'"></span></td>
+                            <td>
+                                <button type="submit" class="btn btn-warning">Update</button>
+                            </td>
+                            <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa không ạ ?')"
+                                   class="btn btn-danger"
+                                   th:href="@{|/cartController/delete/${item.getId()}|}">Delete</a></td>
+                        </tr>
+                    </form>
+                </th:block>
+
+                </tbody>
+            </table>
+            <div>
+                <a style="margin-left: 15% ; margin-top: 35px" class="btn btn-warning btn-md" th:href="@{/menu}">Tiếp
+                    tục đặt hàng</a>
+            </div>
+
+            <button style="margin-left: 73%;margin-top: -50px" type="button" class="btn btn-primary"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    th:text="'Thanh toán: '+'&nbsp;'+${total}+' $'">
+            </button>
+            <form action="/orderController/create" method="post">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-dark" id="exampleModalLabel">Hóa đơn</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="phoneNumber" class="form-label text-dark">Phone Number</label>
+                                    <input type="text" class="form-control" name="phone" id="phoneNumber" placeholder="(+84 ...)">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label text-dark">Address</label>
+                                    <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" onclick="return confirm('Đặt hàng thành công.Đồ ăn sẽ tới bạn trong thòi gian sớm nhất!!!')">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Contact Us
+                    </h4>
+                    <div class="contact_link_box">
+                        <a href="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                    Location
+                  </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                    Call +01 1234567890
+                  </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                    letheanhbn20032gmail.com
+                  </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <div class="footer_detail">
+                    <a href="" class="footer-logo">
+                        Pizza&More
+                    </a>
+                    <p>
+                        Necessary, making this the first true generator on the Internet. It uses a dictionary of over
+                        200 Latin
+                        words, combined with
+                    </p>
+                    <div class="footer_social">
+                        <a href="">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-pinterest" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <h4>
+                    Opening Hours
+                </h4>
+                <p>
+                    Everyday
+                </p>
+                <p>
+                    10.00 Am -10.00 Pm
+                </p>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>
+                &copy; <span id=""></span> All Rights Reserved By
+                <a href="https://html.design/">Free Html Templates</a><br><br>
+                &copy; <span id="displayYear"></span> Distributed By
+                <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+            </p>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <!--    <link th:href="@{/img/favicon.ico}" rel="icon">-->
+
+    <link rel="shortcut icon" th:href="@{/admin/images/favicon.png}" type="">
+
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link th:href="@{/lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet"/>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link th:href="@{/admin/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link th:href="@{/admin/css/style.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/createPr.css}">
+</head>
+
+<body>
+<div class="container-fluid position-relative d-flex p-0">
+    <!-- Sidebar Start -->
+    <div class="sidebar pe-4 pb-3">
+        <nav class="navbar bg-secondary navbar-dark">
+            <a th:href="@{/adminController/admin}" class="navbar-brand mx-4 mb-3">
+                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+            </a>
+            <div class="d-flex align-items-center ms-4 mb-4">
+                <div class="position-relative">
+                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-0">Jhon Doe</h6>
+                    <span>Admin</span>
+                </div>
+            </div>
+            <div class="navbar-nav w-100">
+                <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                            class="fa fa-laptop me-2"></i>Elements</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a th:href="@{/catalogController/catalog}" class="dropdown-item">Catalog</a>
+                        <a th:href="@{/productController/product}" class="dropdown-item">Product</a>
+                        <a href="element.html" class="dropdown-item">User</a>
+                        <a href="element.html" class="dropdown-item">Order</a>
+                        <a href="element.html" class="dropdown-item">FeedBack</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Sidebar End -->
+
+
+    <!-- Content Start -->
+    <div class="content">
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+            <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+            </a>
+            <a href="#" class="sidebar-toggler flex-shrink-0">
+                <i class="fa fa-bars"></i>
+            </a>
+            <form class="d-none d-md-flex ms-4">
+                <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+            </form>
+            <div class="navbar-nav align-items-center ms-auto">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fa fa-envelope me-lg-2"></i>
+                        <span class="d-none d-lg-inline-flex">Message</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                        <a href="#" class="dropdown-item">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle" src="img/user.jpg" alt=""
+                                     style="width: 40px; height: 40px;">
+                                <div class="ms-2">
+                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                    <small>15 minutes ago</small>
+                                </div>
+                            </div>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle" src="img/user.jpg" alt=""
+                                     style="width: 40px; height: 40px;">
+                                <div class="ms-2">
+                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                    <small>15 minutes ago</small>
+                                </div>
+                            </div>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle" src="img/user.jpg" alt=""
+                                     style="width: 40px; height: 40px;">
+                                <div class="ms-2">
+                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                    <small>15 minutes ago</small>
+                                </div>
+                            </div>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item text-center">See all message</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fa fa-bell me-lg-2"></i>
+                        <span class="d-none d-lg-inline-flex">Notificatin</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                        <a href="#" class="dropdown-item">
+                            <h6 class="fw-normal mb-0">Profile updated</h6>
+                            <small>15 minutes ago</small>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">
+                            <h6 class="fw-normal mb-0">New user added</h6>
+                            <small>15 minutes ago</small>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">
+                            <h6 class="fw-normal mb-0">Password changed</h6>
+                            <small>15 minutes ago</small>
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item text-center">See all notifications</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
+                             style="width: 40px; height: 40px;">
+                        <span class="d-none d-lg-inline-flex">John Doe</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                        <a href="#" class="dropdown-item">My Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="#" class="dropdown-item">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <br>
+        <div>
+            <form action="/productController/create" method="post" style="border: 1px solid;width: 50%; margin: 0 auto;padding: 20px" enctype="multipart/form-data">
+                <div>
+                    <h1 style="color: black;text-align: center">Thêm mới sản phẩm</h1>
+                </div>
+                <div class="form-field">
+                    <label for="product-name">Product Name: </label>
+                    <input type="text" id="product-name" name="name" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="product-title">Title: </label>
+                    <input type="text" id="product-title" name="title" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="product-quantity">Quantity: </label>
+                    <input type="number" id="product-quantity" name="quantity" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="product-price">Price: </label>
+                    <input type="number" id="product-price" name="price" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="product-thumbnail">Thumbnail:</label>
+                    <input type="file" id="product-thumbnail" name="thumbnailUrl" required>
+                </div>
+                <div>
+                    <select name="id">
+                        <option value="id">-- Chọn danh mục --</option>
+                        <th:block th:each="catalog : ${listCatalog}">
+                            <option th:value="${catalog.getId()}" th:text="${catalog.getName()}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="form-submit">
+                    <button class="btn btn-success" type="submit">Create Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/Product/lib/chart/chart.min.js}"></script>
+<script th:src="@{/Product/lib/easing/easing.min.js}"></script>
+<script th:src="@{/Product/lib/waypoints/waypoints.min.js}"></script>
+<script th:src="@{/Product/lib/owlcarousel/owl.carousel.min.js}"></script>
+<script th:src="@{/Product/lib/tempusdominus/js/moment.min.js}"></script>
+<script th:src="@{/Product/lib/tempusdominus/js/moment-timezone.min.js}"></script>
+<script th:src="@{/Product/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+<!-- Template Javascript -->
+<script th:src="@{/admin/js/main.js}"></script>
+</body>
+
+</html>
+</body>
+</html>
+</body>
+</html>
